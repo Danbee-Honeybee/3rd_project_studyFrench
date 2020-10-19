@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+	<link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/fd87a5d6a4.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-latest.js"/>
+</head>
+<body>
+<form name="signupForm" action="signupSave.do" method='post'>	
+	<table class='table_signup' border="0" cellspacing='0'>
+        <tr>
+            <td>이름</td>
+            <td><input type="text" name="custname" class="name" value='박단비'></td>
+        </tr>
+        <tr>
+            <td>아이디</td>
+            <td>
+            	<input type="text" name="custid" class="id" value='user1'>
+            	<input type="button" class='idcheck_button' onclick='open_pop()' value="중복확인">
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><input type="password" name="custpassword" class="password" value='1234'></td>
+        </tr>
+        <tr>
+            <td>프랑스어 레벨</td>
+            <td>
+                <select name="clevel" class="level">
+                    <option value="A1" checked>A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            </td>
+        </tr>
+        <tr><td colspan="2">
+            <input type="submit" class="write_submit" value="완료">
+            <a href="main.do"><button class='write_cancel'>취소</button></a>
+        </td></tr>
+    </table>
+</form>
+
+
+<form name="modalForm">
+<!-- The Modal -->
+ <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+                <br>
+                	<div class='id_content'>
+	                	<input type="text" name="madal_id" value="" class='modal_id'>
+	                	<input type="submit" class="button" value="중복확인">
+	                	<br><span></span>
+                	</div>
+                </p>
+                <p><br/></p>
+            	<div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
+                <span class="pop_bt" style="font-size: 13pt;">완료</span>
+            </div>
+      </div>
+ </div>
+<!--End Modal-->
+    <script type="text/javascript">
+	  function open_pop(){
+		   $('#myModal').show();
+      }
+	  function close_pop(flag) {
+	       $('#myModal').hide();
+	  };
+	</script>
+</form>
+</body>
+</html>
+
+
+
+
