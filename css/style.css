@@ -230,7 +230,7 @@ table{
 .a__write:hover{
     background-color: red;
 }
-.span_topic{
+.span_topic_study{
 	background-color:#67D5B5;
 	color: white;
 	padding:2px 5px 2px 5px;
@@ -250,6 +250,12 @@ table{
 }
 .span_topic_license{
 	background-color:#84B1ED;
+	color: white;
+	padding:2px 5px 2px 5px;
+	border-radius:3px;
+}
+.span_topic_ect{
+	background-color:gray;
 	color: white;
 	padding:2px 5px 2px 5px;
 	border-radius:3px;
@@ -301,6 +307,67 @@ table{
     border-radius: 5px;
     color:white;
 }
+
+/*커뮤니티 게시판*/
+.a_community_title:hover{
+	text-decoration: underline;
+}
+/*게시판 디테일 한건상세*/
+#heart_icon{
+	color:red;
+}
+#table_detail{
+	width: 750px;
+	border: 0.2px solid gray;
+	border-radius:3px;
+	margin: 100px auto;
+	padding: 5px;
+	background-color:white;
+	text-align:left;
+}
+#table_detail tr:nth-child(1){
+	height:50px;
+	padding:20px;
+}
+#line{
+   height:2px;
+}
+#td_toppic_title{
+	padding:10px;
+}
+#detail_info{
+	padding:10px;
+}
+#detail_content{
+	padding-top:10px;
+	padding-bottom:30px;
+	padding-left:10px;
+}
+#go_to_list{
+   height:70px;
+}
+#go_to_list a{
+   padding:10px;
+   text-decoration:none;
+   border:0.5px solid #a3a1a1;
+   color:gray;
+}
+#reply_box{
+   height:90px;
+   padding:20px;
+}
+#reply_content{
+   width:600px;
+   height:80px;
+   color:gray;
+}
+#submit_reply_Save{
+   padding:10px;
+   text-decoration:none;
+   border:0.5px solid #a3a1a1;
+   background-color:white;
+   color:#fc9d9a;
+}
 /*회원가입*/
 .table_signup{
     margin:100px auto;
@@ -350,6 +417,7 @@ table{
 	text-align:center;
 	margin:45px auto;
 }
+
 /*프로젝트 소개*/
 .project__box{
 	width:700px;
