@@ -14,21 +14,22 @@
 <body>
 	<jsp:include page="header.jsp"/>
 	 <div class='div_write_box'>
+	 <form action="writeSave.do" method="post">
 		<table class='table_write_box' border='0' cellspacing='0'>
 			<tr>
                 <td>
-                    <select name="" class="write_topic">
-                        <option value="">유학</option>
-                        <option value="">자격증</option>
-                        <option value="">학원/과외</option>
-                        <option value="">거래</option>
-                        <option value="">기타</option>
+                    <select name="topic" class="write_topic">
+                        <option value="유학">유학</option>
+                        <option value="자격증">자격증</option>
+                        <option value="학원/과외">학원/과외</option>
+                        <option value="거래">거래</option>
+                        <option value="기타">기타</option>
                     </select>
                     <input type="text" name="title" class="write_title" placeholder="제목을 입력해주세요"
                 ></td>
             </tr>
             <tr>
-                <td><textarea name="content" class="write_content" placeholder="내용을 입력해주세요"></textarea></td>
+                <td><textarea name="bcontent" class="write_content" placeholder="내용을 입력해주세요"></textarea></td>
             </tr>
             <tr>
                 <td>
@@ -37,6 +38,7 @@
                 </td>
             </tr>
 		</table>
+		</form>
 	</div>
     <jsp:include page="footer.jsp"/>
 </body>

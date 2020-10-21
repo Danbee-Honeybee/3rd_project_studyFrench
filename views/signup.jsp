@@ -18,7 +18,7 @@
         <tr>
             <td>아이디</td>
             <td>
-            	<input type="text" name="custid" class="id" value='${custid}'>
+           		<input type="text" name="custid" class="id" value='${custid}'>
             	<input type="button" class='idcheck_button' value="중복확인" onclick="open_pop();"></a>
             </td>
         </tr>

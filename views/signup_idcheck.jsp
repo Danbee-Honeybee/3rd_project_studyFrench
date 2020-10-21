@@ -10,19 +10,27 @@
      function first(){
          open_form.ID.focus();
      }
+     
      function notice(){
          var cnt = document.open_form.cnt.value;
          var span = document.getElementById('spanForNotice');
          if(${cnt}>0){
-        	 span.innerHTML="<font color='red'>이미 사용중인 아이디입니다.</font>";
+        	 span.innerHTML="<font color='red'><br>이미 사용중인 아이디입니다.</font>";
         	 return;
          }
          if(${cnt}==0){
-        	 span.innerHTML="<font color='red'>사용 가능한 아이디입니다. <br>3초후 팝업창이 닫힙니다.</font>";
-        	 setTimeout('close();', 3000);
-        	 setTimeout("location.href='idcheck_complete.do", 3000); 
+             alert("사용 가능한 아이디입니다.");
+        	 popupSubmit();
         	 return;
          }
+     }
+     
+     function popupSubmit(){
+    	 window.opener.name = "signup"; // 부모창의 이름 설정
+    	 document.open_form.target = "signup"; // 타켓을 부모창으로 설정
+    	 document.open_form.action = "idcheck_complete.do";  //부모창에 호출될 url 
+    	 document.open_form.submit();
+    	 self.close();
      }
 </script>
 </head>
@@ -38,6 +46,7 @@
         <input type="submit" class="pop_button" value="중복확인">
         <br><span id='spanForNotice'></span>
    </form>
+   
 </div>
 
 </body>

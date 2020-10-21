@@ -18,7 +18,7 @@
         <table class='table_login__box' border='0' cellspacing='0'>
             <tr>
                 <td>아이디 </td>
-                <td><input type="text" class="id" name="custid" value='uesr1'><br></td>
+                <td><input type="text" class="id" name="custid" value='user1'><br></td>
             </tr>
             <tr>
                 <td>비밀번호 </td>

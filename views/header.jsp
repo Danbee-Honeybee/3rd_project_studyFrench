@@ -20,8 +20,15 @@
         <ul class="navbar__menu">
             <li><a href="community.do">커뮤니티</a></li>
             <li><a href="studyword.do">단어외우기</a></li>
-            <li><a href="signup.do">신규가입</a></li>
-            <li class='button_login'><a href="login.do">로그인</a></li>
+            <c:choose>
+				<c:when test="${empty sessionScope.custid}">
+	            	<li><a href="signup.do">신규가입</a></li>
+	            	<li class='button_login'><a href="login.do">로그인</a></li>
+				</c:when>
+				<c:when test="${not empty sessionScope.custid}">
+					<li><a href="logout.do">로그아웃</a></li>
+				</c:when>
+			</c:choose>
         </ul>
     </nav>
 </body>
