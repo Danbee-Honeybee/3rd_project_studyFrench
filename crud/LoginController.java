@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /*단비프젝*/
 @Controller
@@ -49,11 +50,11 @@ public class LoginController {
 	}//end
 	
 	@RequestMapping("/idcheck_complete.do")
-	public String idcheck_complete(HttpServletRequest request) {
-		String custid = request.getParameter("custid");
-		System.out.println("검사 완료된 id : " + custid);
-		request.setAttribute("custid", custid);
-		return "signup";
+	public ModelAndView idcheck_complete(@RequestParam String custid) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("custid",custid);
+		mav.setViewName("signup");
+		return mav;
 	}//end
 	
 	@RequestMapping("/signupSave.do")
@@ -65,16 +66,14 @@ public class LoginController {
 	}//end
 		
 	/*로그인========================================================*/
+	
 	@RequestMapping("/login.do")
 	public String login_select() {
-		System.out.println("[LoginController] login_select 메소드 실행");
 		return "login";
 	}//end
 	
 	@RequestMapping(value="loginprocess.do") //login.jsp에서 넘어옴
 	public void loginprocess(LoginDTO dto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
-		System.out.println("넘어온 id : "   + dto.getCustid());
-		System.out.println("넘어온 pass : " + dto.getCustpassword());
 		int result = loginDAO.login(dto); // 존재 1 없음 0
 		System.out.println("result 값 : "+result);
 		
@@ -88,11 +87,16 @@ public class LoginController {
 			out.append("</script>");
 			out.flush();
 		} else {
-			session.setAttribute("daum", dto.getCustid());
-			System.out.println("[LoginController] 세션: daum / 회원존재값:" + result);
+			session.setAttribute("custid", dto.getCustid());
 			RequestDispatcher dis = request.getRequestDispatcher("main.do");
 		    dis.include(request, response);
 		}
 	}//end
 	
+	/*로그아웃 ==================================================*/
+	@RequestMapping("/logout.do")
+	public String logout(HttpServletResponse response, HttpSession session) throws Exception {
+		session.invalidate();
+		return "redirect:/main.do";
+	}//end
 }

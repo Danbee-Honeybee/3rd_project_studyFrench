@@ -1,14 +1,34 @@
 package net.hb.crud;
 
+import java.util.Date;
 import org.springframework.web.multipart.MultipartFile; //새로추가
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+
 public class BoardDTO {
+
 	private int custcode;
 	private String custname;
 	private String custid;
 	private String custpassword;
 	private String clevel;
 	private int cpoint;
+	
+	private int board_idx;
+	private String topic;
+	private String title;
+	private String bcontent;
+	private String wdate;
+	private int hit;
+	private int blike;
+	
+	/*추천해요*/
+	private int heart_idx;
+	private String hwriter;
 	
 	private int mid;
 
@@ -17,7 +37,76 @@ public class BoardDTO {
 	private  String img_file_name ; //추가
 	private  MultipartFile upload_f ;  //추가 <input type=file name=uplaod_f
 
+
+	//페이징,검색
+	private int start, end;  
+	private String skey, sval;
+	private int  rcnt;
+	private int  rn;
 	
+	
+	
+	
+	public int getHeart_idx() {
+		return heart_idx;
+	}
+	public void setHeart_idx(int heart_idx) {
+		this.heart_idx = heart_idx;
+	}
+	public String getHwriter() {
+		return hwriter;
+	}
+	public void setHwriter(String hwriter) {
+		this.hwriter = hwriter;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+	public int getBlike() {
+		return blike;
+	}
+	public void setBlike(int blike) {
+		this.blike = blike;
+	}
+	public int getBoard_idx() {
+		return board_idx;
+	}
+	public void setBoard_idx(int board_idx) {
+		this.board_idx = board_idx;
+	}
+	public String getTopic() {
+		return topic;
+	}
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getBcontent() {
+		return bcontent;
+	}
+	public void setBcontent(String bcontent) {
+		this.bcontent = bcontent;
+	}
+	public String getWdate() {
+		return wdate;
+	}
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	}
+	public int getRn() {
+		return rn;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
 	public String getCustid() {
 		return custid;
 	}
@@ -70,10 +159,7 @@ public class BoardDTO {
 	public void setUpload_f(MultipartFile upload_f) {this.upload_f = upload_f;	}
 
 
-	//페이징,검색
-	private int start, end;  
-	private String skey, sval;
-	private int  rcnt;
+	
 
 	public int getStart() {return start;}
 	public void setStart(int start) {this.start = start;}
