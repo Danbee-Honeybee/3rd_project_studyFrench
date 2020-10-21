@@ -9,7 +9,66 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   insert into customer
 	   values(customer_seq.nextVal, #{custname}, #{custid}, #{custpassword}, #{clevel}, 0)    
 	</insert>
-
+	
+	
+	<insert id='writeInsert'>
+		insert into board values(board_reply_seq.nextval, #{custid}, #{topic}, #{title}, #{bcontent}, sysdate, 0, 0)
+	</insert>
+	
+	<!-- 검색+페이징 내가만든 원본 -->
+	<select id="boardSelect" parameterType="net.hb.crud.BoardDTO" resultType="net.hb.crud.BoardDTO">
+	   select  board_idx, custid, topic, title, bcontent, to_char(wdate,'YYYY.MM.DD') as wdate, hit, blike
+	   from board
+	   order by board_idx desc
+	</select>
+	
+	<!-- 쌤이 만든 검색+페이징 -->
+	<select id="boardSelect2" parameterType="net.hb.crud.BoardDTO" resultType="net.hb.crud.BoardDTO">
+	    select * from  (
+	    select rownum rn, h.* ,(select count(*) from board_reply r where r.board_idx=h.board_idx) as rcnt from 
+	     (select * from board where ${skey} like '%' || #{sval} || '%' ) h 
+	  ) where rn between #{start} and #{end} 
+	</select>
+	
+	
+	
+	<select id="detail" resultType="net.hb.crud.BoardDTO">
+	   select  board_idx, custid, topic, title, bcontent, to_char(wdate,'YYYY.MM.DD') as wdate, hit, blike
+	   from board where board_idx=#{board_idx}
+	</select>
+	
+	<!-- 추천 -->
+	
+	<select id="LikeCheck" resultType="int">
+	    select count(*) as cnt from board_heart where hwriter=#{hwriter} and board_idx=#{board_idx}
+	</select>
+	
+	<update id="LikePlusOne">
+		update board set blike = blike + 1 where board_idx=#{board_idx}
+	</update>
+	
+	<update id="LikeMinusOne">
+		update board set blike = blike - 1 where board_idx=#{board_idx}
+	</update>
+	
+	<insert id='likeInsert' >
+		insert into board_heart values(#{hwriter}, #{board_idx})
+	</insert>
+	
+	<delete id='likeDelete' >
+		delete from board_heart where hwriter=#{hwriter} and board_idx=#{board_idx}
+	</delete>
+	
+	<!-- 조회수 -->
+	
+	<update id="BoardAddhit">
+		update board set hit = hit + 1 where board_idx=#{board_idx}
+	</update>
+	
+	<!--  -->
+	
+	
+	
 	<select id="selectAll" resultType="net.hb.crud.BoardDTO" parameterType="net.hb.crud.BoardDTO">
 	   	select * from (
 	   		select  rownum rn, h.* ,(select count(*) from hobby_reply r where r.hobby_idx=h.hobby_idx) as rcnt from hobby h
@@ -20,9 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   select count(*)  from hobby
 	</select>
 	
-	<select id="detail" resultType="net.hb.crud.BoardDTO">
-	   select rownum rn, b.* from hobby b where hobby_idx=#{hobby_idx}
-	</select>
+	
 	
 	<update id="edit">
 		update hobby set name=#{name}, title=#{title}, content=#{content}, gender=#{gender}, hobby=#{hobby}, img_file_name=#{img_file_name} 
@@ -40,13 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<!-- 검색+페이징 -->
-	<select id="selectAll789" parameterType="net.hb.crud.BoardDTO" resultType="net.hb.crud.BoardDTO">
-	   select  * from  (
-	     select  rownum rn, h.* ,(select count(*) from hobby_reply r where r.hobby_idx=h.hobby_idx) as rcnt from 
-	      (select * from hobby  where ${skey} like '%' ||  #{sval} ||  '%'  ) h 
-	   ) where rn  between #{start} and  #{end} 
-	</select>
+	
 	
 	<!--  검색+페이징 동적쿼리문  -->
 	<select id="selectAllDynamic"  resultType="net.hb.crud.BoardDTO">
