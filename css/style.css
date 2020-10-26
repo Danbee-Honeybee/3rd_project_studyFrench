@@ -217,14 +217,16 @@ table{
     height: 40px;
     border: 1px solid #dbdbdb;
 }
-.a__search{
-    background-color: #666666;
+.submit__search{
+	border: 1px solid #dbdbdb;
     margin: 0 5px;
     padding:10px 20px;
+    height:40px;
+    
 }
 .a__write{
     background-color: #0759e7;
-    padding:10px 30px;
+    padding:9px 30px;
     color:white;
 }
 .a__write:hover{
@@ -254,7 +256,7 @@ table{
 	padding:2px 5px 2px 5px;
 	border-radius:3px;
 }
-.span_topic_ect{
+.span_topic_etc{
 	background-color:gray;
 	color: white;
 	padding:2px 5px 2px 5px;
@@ -311,6 +313,12 @@ table{
 /*커뮤니티 게시판*/
 .a_community_title:hover{
 	text-decoration: underline;
+}
+.td__title{
+	width:450px;
+}
+.td__topic{
+	width:115px;
 }
 /*게시판 디테일 한건상세*/
 #heart_icon{
@@ -405,7 +413,7 @@ table{
 	width:150px; height: 30px;
 }
 .pop_button{
-	background-color: #0759e7;
+	background-color: rgb(7, 89, 231);
     color: white;
     width:80px; height: 30px;
     border:0px;
@@ -436,4 +444,99 @@ table{
 }
 .project__table a{
     color:blue;
+}
+
+/*단어외우기*/
+.div_wordcard_box{
+    width:500px;
+    height:150px;
+    margin:100px auto 0 auto;
+    /*margin:100px auto;*/
+    border:0px solid gray;
+    text-align:center;
+    background-color:white;
+    box-shadow: 0 0 0.5em 0 rgb(224, 224, 224);
+    box-sizing: border-box;
+    font-size:20pt;
+    padding-top:30px;
+}
+.div_button_box{
+	width:500px;
+	margin:10px auto 120px auto;
+	text-align:center;
+	color:rgb(7, 89, 231);
+	font-size:20pt;
+}
+.div_button_box table{
+	width:200px;
+    margin:0 auto;
+}
+.td_word_record_number{
+    font-size:15pt;
+    color:black;
+}
+.table_wordList{
+    width:700px;
+    margin:20px auto 0 auto;
+    text-align:center;
+    font-size:12pt;
+    background-color: white;
+    box-shadow: 0 0 0.5em 0 rgb(224, 224, 224);
+}
+.table_wordList tr{
+    height:70px;
+}
+.td_frenchword{
+	width:300px;
+    border-right: 0.2px solid rgb(216, 216, 216);
+}
+.td_koreanword{
+	width:300px;
+}
+.td_wordlevel{
+	width:90px;
+    border-left: 0.2px solid rgb(216, 216, 216);
+}
+.table_level{
+    width:700px;
+    margin:20px auto;
+    text-align:center;
+    font-size:12pt;
+    background-color: white;
+    box-shadow: 0 0 0.5em 0 rgb(224, 224, 224);
+}
+.table_level a{
+    text-decoration: none;
+    color:gray;
+}
+.table_level a:hover{
+    text-decoration: none;
+    color:blue;
+}
+.table_level tr{
+    height:40px;
+}
+.kword{
+	font-size:15pt;
+	color:gray;
+}
+.panel {
+  width:700px;
+  border:1px solid #dbdbdb;
+  background-color:white;
+  text-align: center;
+  display: none;
+  margin:0 auto;
+  padding:20px 0;
+}
+.input_example{
+	width: 300px;
+    height: 40px;
+    border:1px solid #dbdbdb;
+}
+.button_example{
+	border: 1px solid #dbdbdb;
+    margin: 0 5px;
+    padding: 10px 20px;
+    height: 40px;
 }
