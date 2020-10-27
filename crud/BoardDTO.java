@@ -30,6 +30,21 @@ public class BoardDTO {
 	private int heart_idx;
 	private String hwriter;
 	
+	/*단어리스트*/
+	private String fword;
+	private String kword;
+	private String wlevel;
+	private int wrn;
+	
+	/*단어외우기 예문*/
+	private String exam;
+	
+	/*댓글*/
+	private String rcontent;
+	private String rwriter;
+	private String rdate;
+	
+	
 	private int mid;
 
 	private  int hobby_idx; //추가
@@ -47,6 +62,54 @@ public class BoardDTO {
 	
 	
 	
+	public String getRdate() {
+		return rdate;
+	}
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
+	}
+	public String getRwriter() {
+		return rwriter;
+	}
+	public void setRwriter(String rwriter) {
+		this.rwriter = rwriter;
+	}
+	public String getRcontent() {
+		return rcontent;
+	}
+	public void setRcontent(String rcontent) {
+		this.rcontent = rcontent;
+	}
+	public String getExam() {
+		return exam;
+	}
+	public void setExam(String exam) {
+		this.exam = exam;
+	}
+	public int getWrn() {
+		return wrn;
+	}
+	public void setWrn(int wrn) {
+		this.wrn = wrn;
+	}
+	public String getFword() {
+		return fword;
+	}
+	public void setFword(String fword) {
+		this.fword = fword;
+	}
+	public String getKword() {
+		return kword;
+	}
+	public void setKword(String kword) {
+		this.kword = kword;
+	}
+	public String getWlevel() {
+		return wlevel;
+	}
+	public void setWlevel(String wlevel) {
+		this.wlevel = wlevel;
+	}
 	public int getHeart_idx() {
 		return heart_idx;
 	}

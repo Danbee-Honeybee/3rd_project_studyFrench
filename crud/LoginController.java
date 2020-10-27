@@ -75,7 +75,6 @@ public class LoginController {
 	@RequestMapping(value="loginprocess.do") //login.jsp에서 넘어옴
 	public void loginprocess(LoginDTO dto, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		int result = loginDAO.login(dto); // 존재 1 없음 0
-		System.out.println("result 값 : "+result);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -91,6 +90,11 @@ public class LoginController {
 			RequestDispatcher dis = request.getRequestDispatcher("main.do");
 		    dis.include(request, response);
 		}
+	}//end
+	
+	@RequestMapping("/loginSave.do")
+	public String loginSave_select() {
+		return "main";
 	}//end
 	
 	/*로그아웃 ==================================================*/

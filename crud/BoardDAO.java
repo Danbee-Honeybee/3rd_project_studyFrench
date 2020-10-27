@@ -27,29 +27,31 @@ public class BoardDAO { // implements BoardDAOImp
 	}//end
 	
 	public List<BoardDTO>  boardSelect1() { 
-		List<BoardDTO> list = temp.selectList("board.selectAll") ;
-		return list;
+		return temp.selectList("board.selectAll") ;
 	}//end
 	
 	public int  boardCount() { 
 	  return temp.selectOne("board.countAll");
 	}//end
-	   
+	
+	
+	
+	/*한건 상세================================================*/
     public BoardDTO boardDetail( int data ) { 
       return temp.selectOne("board.detail", data);
     }//end
     
-    public void  boardDelete(int data) { 
-    	temp.delete("board.delete", data);
+    public void  boardDelete(int idx) { 
+    	temp.delete("board.delete", idx);
     }//end
     
 	public void  boardEdit(BoardDTO dto) {
 		temp.update("board.edit", dto);
 	}//end
 	
+	
 	/*조회수 ========================================================*/
 	public void BoardAddhit(int idx) {
-		System.out.println("BoardAddhit 실행");
 		temp.update("board.BoardAddhit", idx);
 	}//end
 
@@ -81,6 +83,46 @@ public class BoardDAO { // implements BoardDAOImp
 	}//end
 	
 	
+	
+	/*댓글 삽입=================================================*/
+
+	public void replyInsert(BoardDTO dto) {
+		temp.insert("board.replyInsert", dto);
+	}//end
+	
+	/*댓글 전체 출력 */
+	public List<BoardDTO> replySelect(int board_idx) {
+		List<BoardDTO> replyList= temp.selectList("board.replySelect", board_idx);
+		return replyList;
+	}//end
+	
+	/*단어출력 ===============================================*/
+	
+	public List<BoardDTO> wordSelect() {
+		List<BoardDTO> wordlist = temp.selectList("board.wordSelect");
+		return wordlist;
+	}//end
+	
+	
+	public BoardDTO wordSelectOne(int wrn) {
+		BoardDTO oneWord = temp.selectOne("board.wordSelectOne", wrn);
+		return oneWord;
+	}//end
+
+	public int wordCount() {
+		return temp.selectOne("board.wordCount");
+	}//end
+	
+	public void wordExamAdd() {
+
+	}//end
+	
+	
+	
+	
+	
+	
+	
 	/*페이징 ===============================================*/
 	public List<BoardDTO>  boardSelect2(int start, int end) { 
 		BoardDTO dto = new BoardDTO();
@@ -90,12 +132,13 @@ public class BoardDAO { // implements BoardDAOImp
 	}//end
 	
 	/*페이징+검색 ========================================================================*/
-	public List<BoardDTO> boardSelect(int start, int end, String skey, String sval) {      
+	public List<BoardDTO> boardSelect(int start, int end, String skey, String sval, String topic) {      
 	    BoardDTO dto = new BoardDTO();
 	     dto.setStart(start); 
 	     dto.setEnd(end); 
 	     dto.setSkey(skey);
 	     dto.setSval(sval);
+	     dto.setTopic(topic);
 	    return temp.selectList("board.boardSelect", dto); 
 	}//end
 	
@@ -106,6 +149,10 @@ public class BoardDAO { // implements BoardDAOImp
 		dto.setSval(sval);
 		return temp.selectOne("board.countAllSearch", dto);
 	}
+	
+	
+	
+	
 }//BoardDAO class END
 
 
