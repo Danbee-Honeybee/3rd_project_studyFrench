@@ -25,8 +25,8 @@
                         <option value="거래">거래</option>
                         <option value="기타">기타</option>
                     </select>
-                    <input type="text" name="title" class="write_title" placeholder="제목을 입력해주세요"
-                ></td>
+                    <input type="text" name="title" class="write_title" placeholder="제목을 입력해주세요" maxlength="50">
+                </td>
             </tr>
             <tr>
                 <td><textarea name="bcontent" class="write_content" placeholder="내용을 입력해주세요"></textarea></td>

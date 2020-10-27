@@ -25,7 +25,7 @@
                     </div>
                     <div class='div_word_memory_exp'>
                         DELF 수준별로 단어를 외울 수 있어요.
-                        <br><a class='index_table_a' href=''>바로가기</a>
+                        <br><a class='index_table_a' href='studyword.do'>바로가기</a>
                     </div>
                 </div>
             </td>
@@ -47,7 +47,7 @@
                     <font>단어등록</font>
                 </div>
                 <div class='div_question_exp'>
-                    자신의 수준에 맞는 단어를 외워보세요.
+                    예문을 추가하고 포인트를 받으세요!
                     <br><a class='index_table_a' href=''>바로가기</a>
                 </div>
             </div></td>

@@ -10,13 +10,15 @@
 	<link rel="stylesheet" href="resources/css/style.css">
     <script src="https://kit.fontawesome.com/fd87a5d6a4.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<!-- jQuery CDN -->
+	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
 
 	   <table border='0' cellspacing='0' id='table_detail'>
 	      <tr>
-	         <td id='td_toppic_title' colspan=2>
+	         <td id='td_toppic_title'>
 	          <c:choose>
             	<c:when test="${dto.topic eq '기타'}">
             		<span class='span_topic_ect'> ${dto.topic}</span>
@@ -34,7 +36,16 @@
             		<span class='span_topic_study'> ${dto.topic}</span>
             	</c:when>
             </c:choose>
-	         ${dto.title}</td>
+	         	${dto.title}
+	         </td>
+	         <td align="right" id='go_to_list'>
+		         <c:choose>
+		         		<c:when test="${dto.custid eq sessionScope.custid}">
+		         			<a href='edit.do?idx=${dto.board_idx}'>수정</a>
+		         			<a href='delete.do?idx=${dto.board_idx}'>삭제</a>
+		         		</c:when>
+		         </c:choose>
+	         </td>
 	      </tr>
 	      <tr id='line'>
 	         <td colspan=2><hr></td>
@@ -50,24 +61,20 @@
 	      <tr id='line'>
 	         <td colspan=2><hr></td>
 	      </tr>
+	      
+	      
 	      <tr id='go_to_list'>
-	         <td colspan=2>
+	         <td align='left'>
+	         	<a href='/bselect.do'>이전글</a>
 	         	<a href='community.do'>목록</a> 
 	         	<a href='boardLike.do?idx=${dto.board_idx}' onclick='heart_notice()'>추천 <font style='color:red;'>${dto.blike}</font></a>
 	         	<a href=''>댓글 <font style='color:red;'>0</font></a>
-	         	<c:choose>
-	         		<c:when test="${dto.custid eq sessionScope.custid}">
-	         			<a href=''>수정</a>
-	         		</c:when>
-	         	</c:choose>
 	         </td>
-	      </tr>
-	      <tr id='go_to_list'>
-	         <td align='left'><a href='/bselect.do'>이전글</a></td>
 	         <td align='right'><a href='/bselect.do'>다음글</a></td>
 	      </tr>
 	   </table>
 
+	<c:import url="/replySelect.do"></c:import>
     <jsp:include page="footer.jsp"/>
 </body>
 </html>
