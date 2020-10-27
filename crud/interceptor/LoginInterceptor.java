@@ -52,15 +52,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	public void postHandle(
 			HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
-			throws Exception {
+					throws Exception {
 		logger.info("=======================afterCompletion start========================");
 		logger.info("=======================afterCompletion end=========================");
 	}//end
 
 	public void afterCompletion(
 			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
+					throws Exception {
 		logger.info("=======================postHandle start======================");
-		   logger.info("=======================postHandle end=========================");
+		logger.info("=======================postHandle end=========================");
 	}//end
 }
